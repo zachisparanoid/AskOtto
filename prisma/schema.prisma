@@ -1,0 +1,30 @@
+// GrillSearch — cache of forum search + Claude synthesis results.
+//
+// Note on JSON: the SQLite connector does not support Prisma's `Json` scalar,
+// so `rawResults` and `synthesis` are stored as serialized JSON strings and
+// (de)serialized in lib/cache.ts. The values still round-trip as typed objects
+// (ThreadResult[] and SynthesisResult) at the application boundary.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model SearchCache {
+  id         String   @id @default(cuid())
+  cacheKey   String   @unique // SHA-256 of normalized query string
+  year       String
+  make       String
+  model      String
+  issue      String
+  rawResults String // JSON-serialized ThreadResult[]
+  synthesis  String? // JSON-serialized SynthesisResult | null (null when synthesis degraded)
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime // createdAt + 24h
+
+  @@index([expiresAt])
+}

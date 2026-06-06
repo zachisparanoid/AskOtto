@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark; /* prevents any light-mode flash */
+}
+
+@layer base {
+  * {
+    border-color: theme("colors.border");
+  }
+
+  html {
+    background-color: theme("colors.base");
+  }
+
+  body {
+    background-color: theme("colors.base");
+    color: theme("colors.primary");
+    font-family: theme("fontFamily.sans");
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+  }
+
+  /* Ambient atmosphere: a faint orange "spark" glow + carbon grid, fixed behind content. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        80rem 40rem at 50% -10%,
+        rgba(249, 115, 22, 0.1),
+        transparent 60%
+      ),
+      radial-gradient(
+        60rem 40rem at 100% 0%,
+        rgba(251, 191, 36, 0.05),
+        transparent 55%
+      );
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(120rem 80rem at 50% 0%, black, transparent 75%);
+    -webkit-mask-image: radial-gradient(120rem 80rem at 50% 0%, black, transparent 75%);
+  }
+
+  ::selection {
+    background: rgba(249, 115, 22, 0.3);
+    color: #fff;
+  }
+
+  /* Custom scrollbar — keeps the dark, technical feel. */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme("colors.base");
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme("colors.elevated");
+    border: 2px solid theme("colors.base");
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #34343a;
+  }
+}
+
+@layer components {
+  /* Skeleton shimmer overlay used by LoadingState. */
+  .shimmer {
+    background-image: linear-gradient(
+      100deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.06) 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.06) 60%,
+      transparent 80%
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  /* Hairline corner-tick decoration for "instrument panel" framing. */
+  .panel {
+    @apply relative rounded-2xl border border-border bg-surface;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  /* Tracked-out uppercase label, used for mono metadata + section eyebrows. */
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-secondary;
+  }
+}
