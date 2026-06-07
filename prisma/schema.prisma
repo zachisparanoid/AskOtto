@@ -1,4 +1,4 @@
-// GrillSearch — cache of forum search + Claude synthesis results.
+// AskOtto — cache of forum search + Claude synthesis results.
 //
 // Note on JSON: the SQLite connector does not support Prisma's `Json` scalar,
 // so `rawResults` and `synthesis` are stored as serialized JSON strings and

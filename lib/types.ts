@@ -1,5 +1,5 @@
 /**
- * Shared TypeScript interfaces for GrillSearch.
+ * Shared TypeScript interfaces for AskOtto.
  *
  * These types are the contract between the search layer (Serper), the synthesis
  * layer (Claude Agent SDK), the cache layer (Prisma/SQLite), the API route, and

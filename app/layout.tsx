@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Chakra_Petch, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { OttoProvider } from "@/components/OttoProvider";
+import { OttoChat } from "@/components/OttoChat";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,12 +26,12 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "GrillSearch — Decades of forum knowledge, seconds of search",
-    template: "%s · GrillSearch",
+    default: "AskOtto — Decades of forum knowledge, seconds of search",
+    template: "%s · AskOtto",
   },
   description:
-    "Enter your vehicle and describe the problem. GrillSearch reads real automotive forums and synthesizes a cited, root-cause repair guide — surfacing the hidden-gem fixes most mechanics overlook.",
-  applicationName: "GrillSearch",
+    "Enter your vehicle and describe the problem. AskOtto reads real automotive forums and synthesizes a cited, root-cause repair guide — surfacing the hidden-gem fixes most mechanics overlook.",
+  applicationName: "AskOtto",
   keywords: [
     "car repair",
     "automotive forums",
@@ -38,9 +40,9 @@ export const metadata: Metadata = {
     "DIY mechanic",
     "repair guide",
   ],
-  authors: [{ name: "GrillSearch" }],
+  authors: [{ name: "AskOtto" }],
   openGraph: {
-    title: "GrillSearch",
+    title: "AskOtto",
     description: "Decades of forum knowledge, seconds of search.",
     type: "website",
   },
@@ -62,7 +64,12 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${chakra.variable} ${jetbrains.variable}`}
     >
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <OttoProvider>
+          {children}
+          <OttoChat />
+        </OttoProvider>
+      </body>
     </html>
   );
 }

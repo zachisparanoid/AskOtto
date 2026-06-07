@@ -1,9 +1,9 @@
-# GrillSearch
+# AskOtto
 
 **Decades of forum knowledge, seconds of search.**
 
-GrillSearch is a full-stack automotive repair research app. Enter your vehicle's
-year/make/model and describe the problem in plain English. GrillSearch queries
+AskOtto is a full-stack automotive repair research app. Enter your vehicle's
+year/make/model and describe the problem in plain English. AskOtto queries
 real automotive forums via search, de-duplicates and clusters the threads, and
 uses **Claude** to synthesize a structured, **cited** repair guide — surfacing
 the obscure older posts that contain the actual root-cause fix (e.g. *"the
@@ -102,7 +102,7 @@ SearchForm ──▶ /results ──▶ POST /api/search
    **URL chosen from an enum of the real thread URLs**, then resolved back to the
    actual thread — fabricated citations are structurally impossible.
 4. **Cache** (`lib/cache.ts`) — SHA-256 key over the normalized query; fresh hits
-   return instantly (`X-GrillSearch-Cache: hit`), stale entries serve immediately
+   return instantly (`X-AskOtto-Cache: hit`), stale entries serve immediately
    while refreshing in the background.
 
 ## Edge cases handled

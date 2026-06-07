@@ -150,7 +150,7 @@ export function SynthesisCard({ synthesis }: { synthesis: SynthesisResult }) {
                 <motion.div
                   key={i}
                   {...slideIn(i)}
-                  className="rounded-xl border border-border bg-base/40 p-4"
+                  className="rounded-xl border border-border bg-background/40 p-4"
                 >
                   <div className="mb-1.5 flex items-start justify-between gap-3">
                     <h4 className="font-medium text-primary">{c.title}</h4>
@@ -175,7 +175,7 @@ export function SynthesisCard({ synthesis }: { synthesis: SynthesisResult }) {
                 <motion.li
                   key={s.step}
                   {...slideIn(i)}
-                  className="relative overflow-hidden rounded-xl border border-border bg-base/40 p-4 pl-5"
+                  className="relative overflow-hidden rounded-xl border border-border bg-background/40 p-4 pl-5"
                 >
                   <span className="absolute left-0 top-0 h-full w-1 bg-accent-orange" aria-hidden />
                   <div className="flex items-start gap-3">
@@ -208,7 +208,7 @@ export function SynthesisCard({ synthesis }: { synthesis: SynthesisResult }) {
               {synthesis.partsToInspect.map((p, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-base/40 px-3 py-1.5 text-sm text-primary"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background/40 px-3 py-1.5 text-sm text-primary"
                 >
                   <CircleDot className="h-3.5 w-3.5 text-accent-orange" />
                   {p}

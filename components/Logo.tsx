@@ -8,7 +8,7 @@ interface LogoProps {
   showWordmark?: boolean;
 }
 
-/** Wrench-spark mark + "GrillSearch" wordmark. */
+/** Wrench-spark mark + "AskOtto" wordmark. */
 export function Logo({ className, size = 34, showWordmark = true }: LogoProps) {
   return (
     <span className={cn("inline-flex select-none items-center gap-2.5", className)}>
@@ -25,8 +25,8 @@ export function Logo({ className, size = 34, showWordmark = true }: LogoProps) {
       </span>
       {showWordmark && (
         <span className="font-display text-lg font-bold leading-none tracking-tight">
-          <span className="text-primary">Grill</span>
-          <span className="text-accent-orange">Search</span>
+          <span className="text-primary">Ask</span>
+          <span className="text-accent-orange">Otto</span>
         </span>
       )}
     </span>

@@ -65,7 +65,7 @@ export default function Home() {
             className="mx-auto mt-5 max-w-xl animate-fade-up text-pretty text-base leading-relaxed text-secondary sm:text-lg"
             style={{ animationDelay: "120ms" }}
           >
-            Enter your year, make, model, and the problem in plain English. GrillSearch reads 150+ real
+            Enter your year, make, model, and the problem in plain English. AskOtto reads 150+ real
             mechanic forums and synthesizes a cited, root-cause repair guide — including the obscure old
             posts with the fix most shops never find.
           </p>

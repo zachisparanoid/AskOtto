@@ -2,7 +2,9 @@ import type { Config } from "tailwindcss";
 
 /**
  * GrillSearch design tokens (from the spec) wired as semantic Tailwind colors:
- *   bg-base / bg-surface / bg-elevated, text-primary / text-secondary,
+ *   bg-background / bg-surface / bg-elevated, text-primary / text-secondary,
+ *   (color is named `background`, NOT `base` — `text-base` is a built-in
+ *    font-size utility, so a `base` color would collide and tint text near-black).
  *   border-border, and accent-orange / accent-amber / accent-green / accent-red.
  *
  * Typography: Inter (body), Chakra Petch (display — instrument-cluster feel),
@@ -17,7 +19,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: "#0D0D0F",
+        background: "#0D0D0F",
         surface: "#161618",
         elevated: "#1F1F23",
         border: "#27272A",

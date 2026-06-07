@@ -36,7 +36,7 @@ async function probe(method: "HEAD" | "GET", url: string): Promise<Response> {
       method,
       redirect: "manual",
       signal: controller.signal,
-      headers: { "user-agent": "GrillSearch-forum-check/1.0 (+health probe)" },
+      headers: { "user-agent": "AskOtto-forum-check/1.0 (+health probe)" },
     });
   } finally {
     clearTimeout(timer);

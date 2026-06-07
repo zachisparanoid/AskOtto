@@ -16,7 +16,7 @@ function success(
   cacheHeader: "hit" | "stale" | "miss",
 ): NextResponse {
   const payload: SearchSuccessResponse = { ...body, generatedAt: new Date().toISOString() };
-  return NextResponse.json(payload, { headers: { "X-GrillSearch-Cache": cacheHeader } });
+  return NextResponse.json(payload, { headers: { "X-AskOtto-Cache": cacheHeader } });
 }
 
 /** Background revalidation for stale cache entries (fire-and-forget, never throws). */

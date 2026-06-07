@@ -8,6 +8,7 @@ import { Logo } from "@/components/Logo";
 import { LoadingState } from "@/components/LoadingState";
 import { ResultsPanel } from "@/components/ResultsPanel";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { useOtto } from "@/components/OttoProvider";
 import { cn } from "@/lib/utils";
 
 type Status = "loading" | "success" | "error";
@@ -20,6 +21,21 @@ export function ResultsClient({ query }: { query: VehicleQuery }) {
 
   const vehicleStr = `${query.year} ${query.make} ${query.model}`.trim();
   const hasAllFields = Boolean(query.year && query.make && query.model && query.issue);
+
+  // Give Otto context about the result on screen so it can answer follow-ups.
+  const { setContext: setOttoContext } = useOtto();
+  useEffect(() => {
+    if (!data) return;
+    setOttoContext({
+      vehicle: `${data.vehicle.year} ${data.vehicle.make} ${data.vehicle.model}`.trim(),
+      issue: data.vehicle.issue,
+      summary: data.synthesis?.summary,
+      rootCauses: data.synthesis?.rootCauses.map((c) => `${c.title} (${c.frequency})`),
+      steps: data.synthesis?.repairSteps.map((s) => s.action),
+      sources: data.threads.slice(0, 6).map((t) => `${t.forumName} — ${t.title}`),
+    });
+    return () => setOttoContext(null);
+  }, [data, setOttoContext]);
 
   const run = useCallback(async () => {
     setStatus("loading");
@@ -82,7 +98,7 @@ export function ResultsClient({ query }: { query: VehicleQuery }) {
   return (
     <main className="min-h-dvh">
       {/* Sticky top bar */}
-      <div className="sticky top-0 z-30 border-b border-border bg-base/80 backdrop-blur-md">
+      <div className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur-md">
         <div className="mx-auto flex w-full max-w-content items-center justify-between gap-3 px-4 py-3">
           <Link href="/" className="shrink-0">
             <Logo size={30} />

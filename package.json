@@ -1,5 +1,5 @@
 {
-  "name": "grillsearch",
+  "name": "askotto",
   "version": "1.0.0",
   "private": true,
   "description": "Automotive repair research — searches real forums, clusters by symptom, and synthesizes a cited repair guide with Claude.",
