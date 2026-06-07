@@ -1,5 +1,6 @@
 import { Logo } from "@/components/Logo";
 import { SearchForm } from "@/components/SearchForm";
+import { CodeLookup } from "@/components/CodeLookup";
 import { Search, Sparkles, Wrench } from "lucide-react";
 
 const POPULAR = [
@@ -73,6 +74,10 @@ export default function Home() {
 
         <div className="mt-9 w-full max-w-2xl">
           <SearchForm />
+        </div>
+
+        <div className="mt-4 w-full max-w-2xl">
+          <CodeLookup />
         </div>
 
         <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-secondary">

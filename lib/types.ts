@@ -111,3 +111,32 @@ export type SearchResponse = SearchSuccessResponse | SearchErrorResponse;
 export function isSearchError(r: SearchResponse): r is SearchErrorResponse {
   return (r as SearchErrorResponse).error !== undefined;
 }
+
+// ── OBD-II trouble code lookup ──────────────────────────────────────────────
+
+export type CodeSeverity = "low" | "moderate" | "high" | "severe";
+
+/** Structured explanation of a diagnostic trouble code (from /api/code). */
+export interface CodeLookupResult {
+  /** Normalized code, e.g. "P0420". */
+  code: string;
+  /** Standard name, e.g. "Catalyst System Efficiency Below Threshold (Bank 1)". */
+  title: string;
+  /** System area, e.g. "Powertrain — Emissions". */
+  category: string;
+  /** Plain-language explanation of what the code indicates. */
+  meaning: string;
+  severity: CodeSeverity;
+  /** Whether / how long it's safe to keep driving, in plain terms. */
+  driveable: string;
+  commonCauses: string[];
+  whatToDo: string[];
+  /** Typical repair cost range, e.g. "$150–$600". */
+  estimatedCost: string;
+  disclaimer: string;
+}
+
+export interface CodeLookupResponse {
+  result: CodeLookupResult;
+  cached: boolean;
+}
