@@ -1,5 +1,5 @@
 ## Goal
-Build a full-stack automotive repair research webapp called **GrillSearch** (working name). A user enters their vehicle's year, make, model, and a plain-language description of their issue. The app queries real automotive forums via a search API, clusters the relevant threads by symptom similarity, and uses an LLM to synthesize a structured repair guide from forum findings — surfacing forum posts from any era that contain the actual root-cause fix (e.g., "bend in the wiring harness at 15 years old"). Results cite their source threads with links, dates, and vote/reply counts.
+Build a full-stack automotive repair research webapp called **AskOtto**. A user enters their vehicle's year, make, model, and a plain-language description of their issue. The app queries real automotive forums via a search API, clusters the relevant threads by symptom similarity, and uses an LLM to synthesize a structured repair guide from forum findings — surfacing forum posts from any era that contain the actual root-cause fix (e.g., "bend in the wiring harness at 15 years old"). Results cite their source threads with links, dates, and vote/reply counts.
 
 ---
 
@@ -23,7 +23,7 @@ Build a full-stack automotive repair research webapp called **GrillSearch** (wor
 ## File / module layout
 
 ```
-grillsearch/
+askotto/
 ├── app/
 │   ├── layout.tsx                  # Root layout, global fonts, metadata
 │   ├── page.tsx                    # Landing / search page
